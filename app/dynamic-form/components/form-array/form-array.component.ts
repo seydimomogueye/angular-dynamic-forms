@@ -12,7 +12,7 @@ import { FieldConfig } from '../../models/field-config.interface';
         [formGroup]="group">
         <label>{{ config.label }}</label>
 
-        <div *ngFor="let fg of group.get(config.name).controls; let i=index">
+        <div *ngFor="let fg of controls; let i=index">
           <div class="col-sm-12 row" [formGroup]="fg">
             <div class="">
               <input [id]="config.name + '_' + i + '_id'"
@@ -30,4 +30,8 @@ import { FieldConfig } from '../../models/field-config.interface';
 export class FormArrayComponent implements Field {
   config: FieldConfig;
   group: FormGroup;
+
+  get controls() {
+    return (this.group.get(this.config.name) as FormArray).controls;
+  }
 }
