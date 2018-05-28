@@ -31,11 +31,27 @@ export class AppComponent implements AfterViewInit {
       validation: [Validators.required, Validators.minLength(4)]
     },
     {
+      type: 'input',
+      label: 'Email',
+      name: 'email',
+      placeholder: 'Enter your email',
+      validation: [Validators.required, Validators.email]
+    },
+    {
       type: 'select',
       label: 'Favourite Food',
       name: 'food',
       options: ['Pizza', 'Hot Dogs', 'Knakworstje', 'Coffee'],
       placeholder: 'Select an option',
+      isMultiple: true,
+      validation: [Validators.required]
+    },
+    {
+      type: 'radio',
+      label: 'Deliver ?',
+      name: 'deliver',
+      options: [{ value: 0, label: 'Yes' }, { value: 1, label: 'No' }],
+      isMultiple: true,
       validation: [Validators.required]
     },
     {
@@ -58,7 +74,7 @@ export class AppComponent implements AfterViewInit {
     this.form.setValue('name', 'Todd Motto');
   }
 
-  submit(value: {[name: string]: any}) {
+  submit(value: { [name: string]: any }) {
     console.log(value);
   }
 }

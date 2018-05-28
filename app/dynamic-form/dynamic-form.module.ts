@@ -6,26 +6,24 @@ import { DynamicFieldDirective } from './components/dynamic-field/dynamic-field.
 import { DynamicFormComponent } from './containers/dynamic-form/dynamic-form.component';
 import { FormButtonComponent } from './components/form-button/form-button.component';
 import { FormInputComponent } from './components/form-input/form-input.component';
+import { FormRadioComponent } from './components/form-radio/form-radio.component';
 import { FormSelectComponent } from './components/form-select/form-select.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ReactiveFormsModule
-  ],
+  imports: [CommonModule, ReactiveFormsModule],
   declarations: [
     DynamicFieldDirective,
     DynamicFormComponent,
     FormButtonComponent,
     FormInputComponent,
+    FormRadioComponent,
     FormSelectComponent
   ],
-  exports: [
-    DynamicFormComponent
-  ],
+  exports: [DynamicFormComponent],
   entryComponents: [
     FormButtonComponent,
     FormInputComponent,
+    FormRadioComponent,
     FormSelectComponent
   ]
 })

@@ -1,16 +1,27 @@
-import { ComponentFactoryResolver, ComponentRef, Directive, Input, OnChanges, OnInit, Type, ViewContainerRef } from '@angular/core';
+import {
+  ComponentFactoryResolver,
+  ComponentRef,
+  Directive,
+  Input,
+  OnChanges,
+  OnInit,
+  Type,
+  ViewContainerRef
+} from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 import { FormButtonComponent } from '../form-button/form-button.component';
 import { FormInputComponent } from '../form-input/form-input.component';
 import { FormSelectComponent } from '../form-select/form-select.component';
+import { FormRadioComponent } from '../form-radio/form-radio.component';
 
 import { Field } from '../../models/field.interface';
 import { FieldConfig } from '../../models/field-config.interface';
 
-const components: {[type: string]: Type<Field>} = {
+const components: { [type: string]: Type<Field> } = {
   button: FormButtonComponent,
   input: FormInputComponent,
+  radio: FormRadioComponent,
   select: FormSelectComponent
 };
 
@@ -18,11 +29,9 @@ const components: {[type: string]: Type<Field>} = {
   selector: '[dynamicField]'
 })
 export class DynamicFieldDirective implements Field, OnChanges, OnInit {
-  @Input()
-  config: FieldConfig;
+  @Input() config: FieldConfig;
 
-  @Input()
-  group: FormGroup;
+  @Input() group: FormGroup;
 
   component: ComponentRef<Field>;
 
@@ -46,7 +55,9 @@ export class DynamicFieldDirective implements Field, OnChanges, OnInit {
         Supported types: ${supportedTypes}`
       );
     }
-    const component = this.resolver.resolveComponentFactory<Field>(components[this.config.type]);
+    const component = this.resolver.resolveComponentFactory<Field>(
+      components[this.config.type]
+    );
     this.component = this.container.createComponent(component);
     this.component.instance.config = this.config;
     this.component.instance.group = this.group;
