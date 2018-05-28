@@ -10,7 +10,9 @@ import {
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
+import { FormArrayComponent } from '../form-array/form-array.component';
 import { FormButtonComponent } from '../form-button/form-button.component';
+import { FormCheckboxComponent } from '../form-checkbox/form-checkbox.component';
 import { FormInputComponent } from '../form-input/form-input.component';
 import { FormSelectComponent } from '../form-select/form-select.component';
 import { FormRadioComponent } from '../form-radio/form-radio.component';
@@ -20,6 +22,8 @@ import { FieldConfig } from '../../models/field-config.interface';
 
 const components: { [type: string]: Type<Field> } = {
   button: FormButtonComponent,
+  checkbox: FormCheckboxComponent,
+  array: FormArrayComponent,
   input: FormInputComponent,
   radio: FormRadioComponent,
   select: FormSelectComponent

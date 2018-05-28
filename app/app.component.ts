@@ -24,6 +24,23 @@ export class AppComponent implements AfterViewInit {
 
   config: FieldConfig[] = [
     {
+      type: 'array',
+      label: 'New Array Label',
+      name: 'choices',
+      arrays: {
+        type: 'checkbox',
+        controls: [
+          { value: 1, label: 'l-1' },
+          { value: 2, label: 'l-2' },
+          { value: 3, label: 'l-3' }
+        ],
+        extras: [
+          { name: 'max_value', placeholder: 'Valeur Maximale' },
+          { name: 'min_value', placeholder: 'Valeur Minimale' }
+        ]
+      }
+    },
+    {
       type: 'input',
       label: 'Full name',
       name: 'name',
@@ -31,27 +48,11 @@ export class AppComponent implements AfterViewInit {
       validation: [Validators.required, Validators.minLength(4)]
     },
     {
-      type: 'input',
-      label: 'Email',
-      name: 'email',
-      placeholder: 'Enter your email',
-      validation: [Validators.required, Validators.email]
-    },
-    {
       type: 'select',
       label: 'Favourite Food',
       name: 'food',
       options: ['Pizza', 'Hot Dogs', 'Knakworstje', 'Coffee'],
       placeholder: 'Select an option',
-      isMultiple: true,
-      validation: [Validators.required]
-    },
-    {
-      type: 'radio',
-      label: 'Deliver ?',
-      name: 'deliver',
-      options: [{ value: 0, label: 'Yes' }, { value: 1, label: 'No' }],
-      isMultiple: true,
       validation: [Validators.required]
     },
     {
